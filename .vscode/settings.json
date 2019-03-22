@@ -1,0 +1,14 @@
+{
+	"files.exclude": {
+		".*": true,
+		"dist": true,
+		"README.md": true,
+		"LICENSE": true,
+		"tsconfig.*": true,
+		"tslint.json": true,
+		"package.json": true
+	},
+	"editor.tabSize": 2,
+	"editor.detectIndentation": false,
+	"editor.insertSpaces": false,
+}
