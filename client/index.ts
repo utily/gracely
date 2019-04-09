@@ -1,4 +1,5 @@
 export { missingQueryArgument } from "./missingQueryArgument"
 export { invalidQueryArgument } from "./invalidQueryArgument"
+export { malformedContent } from "./malformedContent"
 export { invalidContent } from "./invalidContent"
 export { notFound } from "./notFound"
