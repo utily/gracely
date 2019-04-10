@@ -1,6 +1,6 @@
 {
  "name": "gracely",
- "version": "0.0.8",
+ "version": "0.0.9",
  "description": "Graceful error handling for REST API:s.",
  "author": "Simon Mika <simon@mika.se>",
  "license": "MIT",
