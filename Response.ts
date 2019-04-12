@@ -6,8 +6,11 @@ export class Response {
 		this.headers = typeof(body) == "string" ? { "content-type": "text/html; charset=utf-8" } :
 			body != undefined && body != null ? { "content-type": "application/json; charset=utf-8" } : {}
 	}
+	static has(value: any): value is { response: Response } {
+		return typeof(value) == "object" && value.response instanceof Response
+	}
 	static add<T extends Result>(result: T): T & { response: Response } {
-		return { ...result, response: new Response(result.status, result.status >= 400 ? result : Result.getBody(result)) }
+		return Response.has(result) ? result : { ...result, response: new Response(result.status, result.status >= 400 ? result : Result.getBody(result)) }
 	}
 	static respond<T extends Result>(result: T): Response {
 		return Response.add(result).response
