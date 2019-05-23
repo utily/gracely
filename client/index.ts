@@ -1,5 +1,7 @@
+export { invalidPathArgument } from "./invalidPathArgument"
 export { missingQueryArgument } from "./missingQueryArgument"
 export { invalidQueryArgument } from "./invalidQueryArgument"
 export { malformedContent } from "./malformedContent"
 export { invalidContent } from "./invalidContent"
 export { notFound } from "./notFound"
+export { unauthorized } from "./unauthorized"
