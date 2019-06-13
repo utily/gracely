@@ -2,6 +2,7 @@ import { backendFailure } from "./backendFailure"
 import { backendTimeout } from "./backendTimeout"
 import { databaseFailure } from "./databaseFailure"
 import { databaseTimeout } from "./databaseTimeout"
+import { missconfigured } from "./missconfigured"
 import { unavailable } from "./unavailable"
 
 export {
@@ -9,5 +10,6 @@ export {
 	backendTimeout,
 	databaseFailure,
 	databaseTimeout,
+	missconfigured,
 	unavailable,
 }
