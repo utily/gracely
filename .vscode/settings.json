@@ -6,7 +6,8 @@
 		"LICENSE": true,
 		"tsconfig.*": true,
 		"tslint.json": true,
-		"package.json": true
+		"package.json": true,
+		"node_modules": true
 	},
 	"editor.tabSize": 2,
 	"editor.detectIndentation": false,
