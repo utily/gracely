@@ -1,5 +1,6 @@
 export { invalidPathArgument } from "./invalidPathArgument"
 export { missingQueryArgument } from "./missingQueryArgument"
+export { missingProperty } from "./missingProperty"
 export { invalidQueryArgument } from "./invalidQueryArgument"
 export { malformedContent } from "./malformedContent"
 export { invalidContent } from "./invalidContent"
