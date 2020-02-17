@@ -11,7 +11,7 @@
  "bugs": {
   "url": "https://github.com/payfunc/gracely/issues"
  },
- "homepage": "https://github.com/payfunc/gracely#readme",
+ "homepage": "https://payfunc.com/open-source/gracely",
  "private": false,
  "main": "dist/index.js",
  "typings": "dist/index.d.ts",
