@@ -1,8 +1,7 @@
 import { Error } from "../Error"
-import { Response } from "../Response"
 
-export function notFound(): Error & { response: Response } {
-	return Response.add({ status: 404, type: "not found" })
+export function notFound(): Error {
+	return { status: 404, type: "not found" }
 }
 export namespace notFound {
 	export function is(value: any): value is { status: 404, type: "not found" } {
