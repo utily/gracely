@@ -1,8 +1,7 @@
 import { Error } from "../Error"
-import { Response } from "../Response"
 
-export function malformedContent(property: string, type: string, description: string, details?: any): Error & { content: { property: string, type: string, description: string, details?: any }, response: Response } {
-	return Response.add({ status: 400, type: "malformed content", content: { property, type, description } })
+export function malformedContent(property: string, type: string, description: string, details?: any): Error & { content: { property: string, type: string, description: string, details?: any } } {
+	return { status: 400, type: "malformed content", content: { property, type, description } }
 }
 export namespace malformedContent {
 	export function is(value: any): value is { status: 400, type: "malformed content", content: { property: string, type: string, description: string, details?: any } } {

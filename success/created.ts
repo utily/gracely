@@ -1,8 +1,7 @@
 import { Result } from "../Result"
-import { Response } from "../Response"
 
-export function created<T>(body: T): Result & { body: T, response: Response } {
-	return Response.add({ status: 201, body })
+export function created<T>(body: T): Result & { body: T } {
+	return { status: 201, body }
 }
 export namespace created {
 	export function is(value: any): value is { status: 201, body: any } {
