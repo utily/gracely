@@ -1,6 +1,6 @@
 import { Error } from "../Error"
 
-export function unknSown(error?: any): { status: 500, type: "unknown error", error?: any } {
+export function unknown(error?: any): { status: 500, type: "unknown error", error?: any } {
 	return { status: 500, type: "unknown error", error }
 }
 export namespace unknown {
