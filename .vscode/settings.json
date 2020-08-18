@@ -5,7 +5,7 @@
 		"README.md": true,
 		"LICENSE": true,
 		"tsconfig.*": true,
-		"tslint.json": true,
+		".eslintrc": true,
 		"package.json": true,
 		"package-lock.json": true,
 		"node_modules": true
@@ -13,4 +13,13 @@
 	"editor.tabSize": 2,
 	"editor.detectIndentation": false,
 	"editor.insertSpaces": false,
+	"editor.formatOnSave": true,
+	"editor.formatOnPaste": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true,
+		"eslint.autoFixOnSave": true,
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features"
+	}
 }

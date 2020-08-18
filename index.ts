@@ -6,12 +6,4 @@ import * as redirect from "./redirect"
 import * as client from "./client"
 import * as server from "./server"
 
-export {
-	Error,
-	Flaw,
-	Result,
-	success,
-	redirect,
-	client,
-	server,
-}
+export { Error, Flaw, Result, success, redirect, client, server }

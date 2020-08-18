@@ -6,12 +6,4 @@ import { missconfigured } from "./missconfigured"
 import { unavailable } from "./unavailable"
 import { unknown } from "./unknown"
 
-export {
-	backendFailure,
-	backendTimeout,
-	databaseFailure,
-	databaseTimeout,
-	missconfigured,
-	unavailable,
-	unknown,
-}
+export { backendFailure, backendTimeout, databaseFailure, databaseTimeout, missconfigured, unavailable, unknown }
