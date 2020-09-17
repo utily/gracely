@@ -1,7 +1,7 @@
 import { Result } from "../Result"
 
-export function ok<T>(body: T): Result & { body: T } {
-	return { status: 200, body }
+export function ok<T>(body: T, eTag?: string): Result & { body: T } {
+	return { status: 200, body, header: { eTag } }
 }
 export namespace ok {
 	export function is(value: any): value is { status: 200; body: any } {
