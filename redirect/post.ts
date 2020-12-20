@@ -1,5 +1,5 @@
-import { Result } from "../Result"
 import { Response } from "../Response"
+import { Result } from "../Result"
 import * as success from "../success"
 
 export function post(
