@@ -6,6 +6,10 @@ export interface DatabaseTimeout {
 	error?: string
 }
 
+export function databaseTimeout(error?: string): DatabaseTimeout {
+	return { status: 504, type: "database timeout", error }
+}
+
 export namespace DatabaseTimeout {
 	export function is(value: any): value is DatabaseTimeout {
 		return (
@@ -15,8 +19,5 @@ export namespace DatabaseTimeout {
 			(value.error == undefined || typeof value.error == "string") &&
 			Result.is(value)
 		)
-	}
-	export function create(error?: string): DatabaseTimeout {
-		return { status: 504, type: "database timeout", error }
 	}
 }

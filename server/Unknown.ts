@@ -7,6 +7,10 @@ export interface Unknown {
 	error?: string
 }
 
+export function unknown(details?: any, error?: string): Unknown {
+	return { status: 500, type: "unknown error", details, error }
+}
+
 export namespace Unknown {
 	export function is(value: any): value is Unknown {
 		return (
@@ -16,8 +20,5 @@ export namespace Unknown {
 			(value.error == undefined || typeof value.error == "string") &&
 			Result.is(value)
 		)
-	}
-	export function create(details?: any, error?: string): Unknown {
-		return { status: 500, type: "unknown error", details, error }
 	}
 }

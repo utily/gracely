@@ -6,6 +6,10 @@ export interface Unavailable {
 	error?: string
 }
 
+export function unavailable(error?: string): Unavailable {
+	return { status: 503, type: "service unavailable", error }
+}
+
 export namespace Unavailable {
 	export function is(value: any): value is Unavailable {
 		return (
@@ -15,8 +19,5 @@ export namespace Unavailable {
 			(value.error == undefined || typeof value.error == "string") &&
 			Result.is(value)
 		)
-	}
-	export function create(error?: string): Unavailable {
-		return { status: 503, type: "service unavailable", error }
 	}
 }

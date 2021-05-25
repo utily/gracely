@@ -8,6 +8,10 @@ export interface FlawedContent {
 	error?: string
 }
 
+export function flawedContent(content: Flaw, error?: string): FlawedContent {
+	return { status: 400, type: "flawed content", content, error }
+}
+
 export namespace FlawedContent {
 	export function is(value: any): value is FlawedContent {
 		return (
@@ -18,8 +22,5 @@ export namespace FlawedContent {
 			(value.error == undefined || typeof value.error == "string") &&
 			Result.is(value)
 		)
-	}
-	export function create(content: Flaw, error?: string): FlawedContent {
-		return { status: 400, type: "flawed content", content, error }
 	}
 }

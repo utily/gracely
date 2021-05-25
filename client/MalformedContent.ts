@@ -7,6 +7,16 @@ export interface MalformedContent {
 	error?: string
 }
 
+export function malformedContent(
+	property: string,
+	type: string,
+	description: string,
+	details?: any,
+	error?: string
+): MalformedContent {
+	return { status: 400, type: "malformed content", content: { property, type, description, details }, error }
+}
+
 export namespace MalformedContent {
 	export function is(value: any): value is MalformedContent {
 		return (
@@ -20,14 +30,5 @@ export namespace MalformedContent {
 			(value.error == undefined || typeof value.error == "string") &&
 			Result.is(value)
 		)
-	}
-	export function create(
-		property: string,
-		type: string,
-		description: string,
-		details?: any,
-		error?: string
-	): MalformedContent {
-		return { status: 400, type: "malformed content", content: { property, type, description, details }, error }
 	}
 }

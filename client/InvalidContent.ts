@@ -11,6 +11,10 @@ export interface InvalidContent {
 	error?: string
 }
 
+export function invalidContent(type: string, description: string, details?: any, error?: string): InvalidContent {
+	return { status: 400, type: "invalid content", content: { type, description, details }, error }
+}
+
 export namespace InvalidContent {
 	export function is(value: any): value is InvalidContent {
 		return (
@@ -20,8 +24,5 @@ export namespace InvalidContent {
 			(value.error == undefined || typeof value.error == "string") &&
 			Result.is(value)
 		)
-	}
-	export function create(type: string, description: string, details?: any, error?: string): InvalidContent {
-		return { status: 400, type: "invalid content", content: { type, description, details }, error }
 	}
 }

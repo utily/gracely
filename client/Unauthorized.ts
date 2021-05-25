@@ -6,6 +6,11 @@ export interface Unauthorized {
 	error?: string
 }
 
+// Don't give user feedback in error parameter
+export function unauthorized(error?: string): Unauthorized {
+	return { status: 401, type: "not authorized", error }
+}
+
 export namespace Unauthorized {
 	export function is(value: any): value is Unauthorized {
 		return (
@@ -15,8 +20,5 @@ export namespace Unauthorized {
 			(value.error == undefined || typeof value.error == "string") &&
 			Result.is(value)
 		)
-	}
-	export function create(error?: string): Unauthorized {
-		return { status: 401, type: "not authorized", error }
 	}
 }

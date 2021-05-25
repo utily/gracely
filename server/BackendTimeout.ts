@@ -6,6 +6,10 @@ export interface BackendTimeout {
 	error?: string
 }
 
+export function backendTimeout(error?: string): BackendTimeout {
+	return { status: 504, type: "backend timeout", error }
+}
+
 export namespace BackendTimeout {
 	export function is(value: any): value is BackendTimeout {
 		return (
@@ -15,8 +19,5 @@ export namespace BackendTimeout {
 			(value.error == undefined || typeof value.error == "string") &&
 			Result.is(value)
 		)
-	}
-	export function create(error?: string): BackendTimeout {
-		return { status: 504, type: "backend timeout", error }
 	}
 }

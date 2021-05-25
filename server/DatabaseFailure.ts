@@ -7,6 +7,10 @@ export interface DatabaseFailure {
 	error?: string
 }
 
+export function databaseFailure(details?: any, error?: string): DatabaseFailure {
+	return { status: 502, type: "database failure", details, error }
+}
+
 export namespace DatabaseFailure {
 	export function is(value: any): value is DatabaseFailure {
 		return (
@@ -16,8 +20,5 @@ export namespace DatabaseFailure {
 			(value.error == undefined || typeof value.error == "string") &&
 			Result.is(value)
 		)
-	}
-	export function create(details?: any, error?: string): DatabaseFailure {
-		return { status: 502, type: "database failure", details, error }
 	}
 }

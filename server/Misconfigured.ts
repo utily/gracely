@@ -8,6 +8,10 @@ export interface Misconfigured {
 	error?: string
 }
 
+export function misconfigured(key: string, description: string, error?: string): Misconfigured {
+	return { status: 503, type: "missing configuration", key, description, error }
+}
+
 export namespace Misconfigured {
 	export function is(value: any): value is Misconfigured {
 		return (
@@ -19,8 +23,5 @@ export namespace Misconfigured {
 			(value.error == undefined || typeof value.error == "string") &&
 			Result.is(value)
 		)
-	}
-	export function create(key: string, description: string, error?: string): Misconfigured {
-		return { status: 503, type: "missing configuration", key, description, error }
 	}
 }

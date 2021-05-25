@@ -7,6 +7,20 @@ export interface MissingProperty {
 	error?: string
 }
 
+export function missingProperty(
+	property: string,
+	type: string,
+	description: string | Record<string, string>,
+	error?: string
+): MissingProperty {
+	return {
+		status: 400,
+		type: "missing property",
+		content: typeof description == "string" ? { property, type, description } : { property, type, ...description },
+		error,
+	}
+}
+
 export namespace MissingProperty {
 	export function is(value: any): value is MissingProperty {
 		return (
@@ -20,18 +34,5 @@ export namespace MissingProperty {
 			(value.error == undefined || typeof value.error == "string") &&
 			Result.is(value)
 		)
-	}
-	export function create(
-		property: string,
-		type: string,
-		description: string | Record<string, string>,
-		error?: string
-	): MissingProperty {
-		return {
-			status: 400,
-			type: "missing property",
-			content: typeof description == "string" ? { property, type, description } : { property, type, ...description },
-			error,
-		}
 	}
 }

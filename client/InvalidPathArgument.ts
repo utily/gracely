@@ -1,18 +1,29 @@
 import { Result } from "../Result"
 
-export interface InvalidQueryArgument {
+export interface InvalidPathArgument {
 	status: 400
-	type: "invalid query argument"
+	type: "invalid path argument"
+	pattern: string
 	argument: { name: string; type: string; description: string }
 	error?: string
 }
 
-export namespace InvalidQueryArgument {
-	export function is(value: any): value is InvalidQueryArgument {
+export function invalidPathArgument(
+	pattern: string,
+	name: string,
+	type: string,
+	description: string,
+	error?: string
+): InvalidPathArgument {
+	return { status: 400, type: "invalid path argument", pattern, argument: { name, type, description }, error }
+}
+
+export namespace InvalidPathArgument {
+	export function is(value: any): value is InvalidPathArgument {
 		return (
 			typeof value == "object" &&
 			value.status == 400 &&
-			value.type == "invalid query argument" &&
+			value.type == "invalid path argument" &&
 			typeof value.pattern == "string" &&
 			typeof value.argument == "object" &&
 			typeof value.argument.name == "string" &&
@@ -21,8 +32,5 @@ export namespace InvalidQueryArgument {
 			(value.error == undefined || typeof value.error == "string") &&
 			Result.is(value)
 		)
-	}
-	export function create(name: string, type: string, description: string, error?: string): InvalidQueryArgument {
-		return { status: 400, type: "invalid query argument", argument: { name, type, description }, error }
 	}
 }
