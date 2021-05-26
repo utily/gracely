@@ -21,6 +21,10 @@ export namespace InvalidContent {
 			typeof value == "object" &&
 			value.status == 400 &&
 			value.type == "invalid content" &&
+			(value.content == undefined ||
+				(typeof value.content == "object" &&
+					typeof value.content.type == "string" &&
+					typeof value.content.description == "string")) &&
 			(value.error == undefined || typeof value.error == "string") &&
 			Result.is(value)
 		)
