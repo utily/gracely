@@ -1,6 +1,7 @@
+import { Error } from "../Error"
 import { Result } from "../Result"
 
-export interface MissingQueryArgument {
+export interface MissingQueryArgument extends Error {
 	status: 400
 	type: "missing query argument"
 	argument: { name: string; type: string; description: string }

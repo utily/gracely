@@ -1,6 +1,7 @@
+import { Error } from "../Error"
 import { Result } from "../Result"
 
-export interface InvalidContent {
+export interface InvalidContent extends Error {
 	status: 400
 	type: "invalid content"
 	content: {

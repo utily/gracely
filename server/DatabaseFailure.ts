@@ -1,6 +1,7 @@
+import { Error } from "../Error"
 import { Result } from "../Result"
 
-export interface DatabaseFailure {
+export interface DatabaseFailure extends Error {
 	status: 502
 	type: "database failure"
 	details?: any

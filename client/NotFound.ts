@@ -1,6 +1,7 @@
+import { Error } from "../Error"
 import { Result } from "../Result"
 
-export interface NotFound {
+export interface NotFound extends Error {
 	status: 404
 	type: "not found"
 	error?: string

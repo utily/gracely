@@ -1,6 +1,7 @@
+import { Error } from "../Error"
 import { Result } from "../Result"
 
-export interface Unauthorized {
+export interface Unauthorized extends Error {
 	status: 401
 	type: "not authorized"
 	error?: string
