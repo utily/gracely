@@ -1,6 +1,7 @@
+import { Error } from "../Error"
 import { Result } from "../Result"
 
-export interface Misconfigured {
+export interface Misconfigured extends Error {
 	status: 503
 	type: "missing configuration"
 	key: string

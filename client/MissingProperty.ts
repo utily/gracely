@@ -1,6 +1,7 @@
+import { Error } from "../Error"
 import { Result } from "../Result"
 
-export interface MissingProperty {
+export interface MissingProperty extends Error {
 	status: 400
 	type: "missing property"
 	content: { property: string; type: string; description?: string } & Record<string, string>

@@ -1,6 +1,7 @@
+import { Error } from "../Error"
 import { Result } from "../Result"
 
-export interface InvalidPathArgument {
+export interface InvalidPathArgument extends Error {
 	status: 400
 	type: "invalid path argument"
 	pattern: string

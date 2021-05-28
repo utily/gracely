@@ -1,6 +1,7 @@
+import { Error } from "../Error"
 import { Result } from "../Result"
 
-export interface Unavailable {
+export interface Unavailable extends Error {
 	status: 503
 	type: "service unavailable"
 	error?: string
