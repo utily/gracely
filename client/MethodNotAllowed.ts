@@ -1,9 +1,10 @@
+import { Error } from "../Error"
 import { Result } from "../Result"
 
-export interface MethodNotAllowed {
+export interface MethodNotAllowed extends Error {
 	status: 405
 	type: "method not allowed"
-	header: { allow: MethodNotAllowed.Method[] }
+	header: { allow: MethodNotAllowed.Method[]; eTag?: undefined }
 	error?: string
 }
 

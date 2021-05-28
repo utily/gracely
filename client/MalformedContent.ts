@@ -1,6 +1,7 @@
+import { Error } from "../Error"
 import { Result } from "../Result"
 
-export interface MalformedContent {
+export interface MalformedContent extends Error {
 	status: 400
 	type: "malformed content"
 	content: { property: string; type: string; description: string; details?: any }
