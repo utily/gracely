@@ -1,6 +1,7 @@
+import { Error } from "../Error"
 import { Result } from "../Result"
 
-export interface BackendTimeout {
+export interface BackendTimeout extends Error {
 	status: 504
 	type: "backend timeout"
 	error?: string

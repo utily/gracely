@@ -1,6 +1,7 @@
+import { Error } from "../Error"
 import { Result } from "../Result"
 
-export interface InvalidQueryArgument {
+export interface InvalidQueryArgument extends Error {
 	status: 400
 	type: "invalid query argument"
 	argument: { name: string; type: string; description: string }

@@ -1,6 +1,7 @@
+import { Error } from "../Error"
 import { Result } from "../Result"
 
-export interface DatabaseTimeout {
+export interface DatabaseTimeout extends Error {
 	status: 504
 	type: "database timeout"
 	error?: string

@@ -1,7 +1,8 @@
+import { Error } from "../Error"
 import { Flaw } from "../Flaw"
 import { Result } from "../Result"
 
-export interface FlawedContent {
+export interface FlawedContent extends Error {
 	status: 400
 	type: "flawed content"
 	content: Flaw

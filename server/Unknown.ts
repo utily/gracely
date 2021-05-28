@@ -1,6 +1,7 @@
+import { Error } from "../Error"
 import { Result } from "../Result"
 
-export interface Unknown {
+export interface Unknown extends Error {
 	status: 500
 	type: "unknown error"
 	details?: any

@@ -1,6 +1,7 @@
+import { Error } from "../Error"
 import { Result } from "../Result"
 
-export interface BackendFailure {
+export interface BackendFailure extends Error {
 	status: 502
 	type: "backend failure"
 	backend: string
