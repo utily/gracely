@@ -3,6 +3,7 @@ export interface Result {
 	body?: any
 	header?: {
 		eTag?: string
+		wwwAuthenticate?: string
 	}
 }
 export namespace Result {
