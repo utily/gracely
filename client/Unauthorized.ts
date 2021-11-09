@@ -14,7 +14,7 @@ export function unauthorized(scheme: "basic",  parameter?: { realm?: string, cha
 export function unauthorized(scheme?: "basic" | string, parameter?: { realm?: string, charset?: "UTF-8" }): Error {
 	const result: Error = { status: 401, type: "not authorized" }
 	if (scheme == "basic")
-		result.header = { wwwAuthenticate: `${scheme} ${Object.entries(parameter ?? {}).map(([p, t]) => `${p}=${t}`).join(", ")}` }
+		result.header = { wwwAuthenticate: `${scheme[0].toUpperCase()}${scheme.slice(1)} ${Object.entries(parameter ?? {}).map(([p, t]) => `${p}=${t}`).join(", ")}` }
 	else
 		result.error = scheme
 	return result
