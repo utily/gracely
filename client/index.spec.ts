@@ -132,5 +132,44 @@ describe("client", () => {
 		expect(gracely.client.NotFound.is(gracely.client.notFound("error"))).toBeTruthy()
 		expect(gracely.client.Unauthorized.is(gracely.client.unauthorized())).toBeTruthy()
 		expect(gracely.client.Unauthorized.is(gracely.client.unauthorized("don't show why"))).toBeTruthy()
+		expect(gracely.client.unauthorized("don't show why")).toEqual({
+			status: 401,
+			type: "not authorized",
+			error: "don't show why",
+		})
+	})
+	it("unauthorized response options testing is it correct?", () => {
+		expect(gracely.client.unauthorized("basic")).toEqual({
+			status: 401,
+			type: "not authorized",
+			header: { wwwAuthenticate: "Basic" },
+		})
+		expect(gracely.client.unauthorized("basic", {})).toEqual({
+			status: 401,
+			type: "not authorized",
+			header: { wwwAuthenticate: "Basic" },
+		})
+		expect(gracely.client.unauthorized("basic", { realm: "" })).toEqual({
+			status: 401,
+			type: "not authorized",
+			header: { wwwAuthenticate: "Basic realm=" },
+		})
+	})
+	it("unauthorized response options testing", () => {
+		expect(gracely.client.unauthorized("basic", { realm: "unicorn" })).toEqual({
+			status: 401,
+			type: "not authorized",
+			header: { wwwAuthenticate: "Basic realm=unicorn" },
+		})
+		expect(gracely.client.unauthorized("basic", { realm: "unicorn", charset: "UTF-8" })).toEqual({
+			status: 401,
+			type: "not authorized",
+			header: { wwwAuthenticate: "Basic realm=unicorn, charset=UTF-8" },
+		})
+		expect(gracely.client.unauthorized("basic", { charset: "UTF-8" })).toEqual({
+			status: 401,
+			type: "not authorized",
+			header: { wwwAuthenticate: "Basic charset=UTF-8" },
+		})
 	})
 })
