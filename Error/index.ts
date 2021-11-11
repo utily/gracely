@@ -8,6 +8,7 @@ export namespace Error {
 	export function is(value: any | Error): value is Error {
 		return (
 			typeof value == "object" &&
+			value &&
 			typeof value.type == "string" &&
 			(value.error == undefined || typeof value.error == "string") &&
 			Result.is(value) &&
