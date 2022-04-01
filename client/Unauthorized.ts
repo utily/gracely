@@ -6,6 +6,9 @@ export interface Unauthorized extends Error {
 	header?: { wwwAuthenticate?: string }
 	type: "not authorized"
 	error?: string
+	emoji?: {
+		mood: "😭"
+	}
 }
 
 export function unauthorized(): Error
