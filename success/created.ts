@@ -1,6 +1,6 @@
 import { Result } from "../Result"
 
-export function created<T>(body: T): Result & { body: T } {
+export function created<T>(body: T): Result<T> & { body: T } {
 	return { status: 201, body }
 }
 export namespace created {

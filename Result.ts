@@ -1,11 +1,11 @@
-export interface Result {
+export type Result<T = undefined> = {
 	status: number
-	body?: any
 	header?: {
 		eTag?: string
 		wwwAuthenticate?: string
 	}
-}
+} &	(T extends undefined ? {} : {body: T}) 
+
 export namespace Result {
 	export function is(value: any | Result): value is Result {
 		return (
@@ -29,3 +29,5 @@ export namespace Result {
 		return hasBody(value) ? value.body : fallback
 	}
 }
+const a: Result = {status: 1}
+console.log(a)
