@@ -1,23 +1,23 @@
 import { Error } from "../Error"
 import { Result } from "../Result"
 
-export interface EntityTagMissMatch extends Error {
+export interface EntityTagMismatch extends Error {
 	status: 412
-	type: "entity tag miss match"
+	type: "entity tag mismatch"
 	content: { description: string }
 	error?: string
 }
 
-export function entityTagMissMatch(description: string): EntityTagMissMatch {
+export function entityTagMismatch(description: string): EntityTagMismatch {
 	return {
 		status: 412,
-		type: "entity tag miss match",
+		type: "entity tag mismatch",
 		content: { description },
 	}
 }
 
-export namespace EntityTagMissMatch {
-	export function is(value: any): value is EntityTagMissMatch {
+export namespace EntityTagMismatch {
+	export function is(value: any): value is EntityTagMismatch {
 		return (
 			typeof value == "object" &&
 			value.status == 412 &&

@@ -193,7 +193,7 @@ describe("client", () => {
 		})
 	})
 	it("entity tag miss match", () => {
-		expect(gracely.client.entityTagMissMatch("Expected etag to be a date.")).toEqual({
+		expect(gracely.client.entityTagMismatch("Expected etag to be a date.")).toEqual({
 			status: 412,
 			type: "entity tag miss match",
 			content: {
