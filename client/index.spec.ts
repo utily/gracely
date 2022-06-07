@@ -172,4 +172,33 @@ describe("client", () => {
 			header: { wwwAuthenticate: "Basic charset=UTF-8" },
 		})
 	})
+	it("missing header", () => {
+		expect(gracely.client.missingHeader("If-Match", "Header If-Match is required for this resource.")).toEqual({
+			status: 400,
+			type: "missing header",
+			content: {
+				name: "If-Match",
+				description: "Header If-Match is required for this resource.",
+			},
+		})
+	})
+	it("malformed header", () => {
+		expect(gracely.client.malformedHeader("If-Match", "Expected value to be a date.")).toEqual({
+			status: 400,
+			type: "malformed header",
+			content: {
+				name: "If-Match",
+				description: "Expected value to be a date.",
+			},
+		})
+	})
+	it("entity tag miss match", () => {
+		expect(gracely.client.entityTagMissMatch("Expected etag to be a date.")).toEqual({
+			status: 412,
+			type: "entity tag miss match",
+			content: {
+				description: "Expected etag to be a date.",
+			},
+		})
+	})
 })
