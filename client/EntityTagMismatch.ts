@@ -21,7 +21,7 @@ export namespace EntityTagMismatch {
 		return (
 			typeof value == "object" &&
 			value.status == 412 &&
-			value.type == "entity tag miss match" &&
+			value.type == "entity tag mismatch" &&
 			typeof value.content == "object" &&
 			typeof value.content.description == "string" &&
 			(value.error == undefined || typeof value.error == "string") &&
