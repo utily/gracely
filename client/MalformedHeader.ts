@@ -4,15 +4,15 @@ import { Result } from "../Result"
 export interface MalformedHeader extends Error {
 	status: 400
 	type: "malformed header"
-	content: { name: string; description: string }
+	content: { header: string; description: string }
 	error?: string
 }
 
-export function malformedHeader(name: string, description: string): MalformedHeader {
+export function malformedHeader(header: string, description: string): MalformedHeader {
 	return {
 		status: 400,
 		type: "malformed header",
-		content: { name, description },
+		content: { header, description },
 	}
 }
 
@@ -23,7 +23,7 @@ export namespace MalformedHeader {
 			value.status == 400 &&
 			value.type == "malformed header" &&
 			typeof value.content == "object" &&
-			typeof value.content.name == "string" &&
+			typeof value.content.header == "string" &&
 			typeof value.content.description == "string" &&
 			Result.is(value)
 		)

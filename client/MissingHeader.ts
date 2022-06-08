@@ -4,15 +4,15 @@ import { Result } from "../Result"
 export interface MissingHeader extends Error {
 	status: 400
 	type: "missing header"
-	content: { name: string; description: string }
+	content: { header: string; description: string }
 	error?: string
 }
 
-export function missingHeader(name: string, description: string): MissingHeader {
+export function missingHeader(header: string, description: string): MissingHeader {
 	return {
 		status: 400,
 		type: "missing header",
-		content: { name, description },
+		content: { header, description },
 	}
 }
 
@@ -23,7 +23,7 @@ export namespace MissingHeader {
 			value.status == 400 &&
 			value.type == "missing header" &&
 			typeof value.content == "object" &&
-			typeof value.content.name == "string" &&
+			typeof value.content.header == "string" &&
 			typeof value.content.description == "string" &&
 			Result.is(value)
 		)

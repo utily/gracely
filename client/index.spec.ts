@@ -177,7 +177,7 @@ describe("client", () => {
 			status: 400,
 			type: "missing header",
 			content: {
-				name: "If-Match",
+				header: "If-Match",
 				description: "Header If-Match is required for this resource.",
 			},
 		})
@@ -187,7 +187,7 @@ describe("client", () => {
 			status: 400,
 			type: "malformed header",
 			content: {
-				name: "If-Match",
+				header: "If-Match",
 				description: "Expected value to be a date.",
 			},
 		})
