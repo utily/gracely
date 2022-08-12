@@ -1,71 +1,70 @@
 {
-	"name": "gracely",
-	"version": "0.0.44",
-	"description": "Graceful error handling for REST API:s.",
-	"author": "PayFunc",
-	"license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/payfunc/gracely"
-	},
-	"bugs": {
-		"url": "https://github.com/payfunc/gracely/issues"
-	},
-	"homepage": "https://payfunc.com/open-source/gracely",
-	"private": false,
-	"main": "dist/index.js",
-	"typings": "dist/index.d.ts",
-	"git": {
-		"tagName": "v${version}"
-	},
-	"github": {
-		"release": true
-	},
-	"jest": {
-		"globals": {
-			"ts-jest": {
-				"tsConfig": "tsconfig.test.json"
-			}
-		},
-		"testEnvironment": "node",
-		"testRegex": "((\\.|/)(test|spec))(\\.|\\/.+)(jsx?|tsx?)$",
-		"testPathIgnorePatterns": [
-			"node_modules/",
-			"dist/"
-		],
-		"collectCoverageFrom": [
-			"**/*.{ts,tsx,js,jsx}",
-			"!**/node_modules/**",
-			"!**/dist/**"
-		],
-		"preset": "ts-jest",
-		"testMatch": null
-	},
-	"scripts": {
-		"dev": "watch 'npm run build' .",
-		"build": "tsc -p .",
-		"lint": "eslint '**/*.{js,ts,tsx}'",
-		"fix": "eslint '**/*.{js,ts,tsx}' --fix",
-		"test": "jest",
-		"test:watch": "watch jest",
-		"prepare": "npm run build",
-		"clean": "rm -rf dist node_modules coverage"
-	},
-	"devDependencies": {
-		"@types/jest": "^26.0.14",
-		"@types/node": "^14.11.10",
-		"@typescript-eslint/eslint-plugin": "^4.4.1",
-		"@typescript-eslint/parser": "^4.4.1",
-		"babel-core": "^6.26.3",
-		"babel-jest": "^26.6.0",
-		"eslint": "^7.11.0",
-		"eslint-config-standardize": "^0.7.1",
-		"eslint-plugin-prettierx": "github:nilssonemma/eslint-plugin-prettierx#master",
-		"eslint-plugin-simple-import-sort": "^7.0.0",
-		"jest": "^26",
-		"prettierx": "github:simonmika/prettierx#newline-before-clause",
-		"ts-jest": "^26.4.1",
-		"typescript": "^4.0.3",
-		"watch": "^1.0.2"
-	}
+  "name": "gracely",
+  "version": "0.0.44",
+  "description": "Graceful error handling for REST API:s.",
+  "author": "PayFunc",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/payfunc/gracely"
+  },
+  "bugs": {
+    "url": "https://github.com/payfunc/gracely/issues"
+  },
+  "homepage": "https://payfunc.com/open-source/gracely",
+  "private": false,
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "git": {
+    "tagName": "v${version}"
+  },
+  "github": {
+    "release": true
+  },
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.test.json"
+      }
+    },
+    "testEnvironment": "node",
+    "testRegex": "((\\.|/)(test|spec))(\\.|\\/.+)(jsx?|tsx?)$",
+    "testPathIgnorePatterns": [
+      "node_modules/",
+      "dist/"
+    ],
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx,js,jsx}",
+      "!**/node_modules/**",
+      "!**/dist/**"
+    ],
+    "preset": "ts-jest",
+    "testMatch": null
+  },
+  "scripts": {
+    "dev": "watch 'npm run build' .",
+    "build": "tsc -p .",
+    "lint": "eslint '**/*.{js,ts,tsx}'",
+    "fix": "eslint '**/*.{js,ts,tsx}' --fix",
+    "test": "jest",
+    "test:watch": "watch jest",
+    "prepare": "npm run build",
+    "clean": "rm -rf dist node_modules coverage"
+  },
+  "devDependencies": {
+    "@types/jest": "^28.1.6",
+    "@typescript-eslint/eslint-plugin": "5.31.0",
+    "@typescript-eslint/parser": "5.31.0",
+    "eslint": "^8.20.0",
+    "eslint-plugin-prettierx": "github:utily/eslint-plugin-prettierx#utily-20220323",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "jest": "^28.1.3",
+    "prettierx": "github:utily/prettierx#utily-20220323",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^28.0.7",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "zod": "^3.18.0"
+  }
 }
