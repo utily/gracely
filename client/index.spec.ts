@@ -1,8 +1,12 @@
-import {gracely} from "../index"
+import { gracely } from "../index"
 
 describe("client", () => {
 	it("missing query argument", () => {
-		const e: gracely.client.MissingQueryArgument = gracely.client.missingQueryArgument("argument", "string", "description of argument")
+		const e: gracely.client.MissingQueryArgument = gracely.client.missingQueryArgument(
+			"argument",
+			"string",
+			"description of argument"
+		)
 		expect({ ...e, response: undefined }).toEqual({
 			status: 400,
 			type: "missing query argument",
