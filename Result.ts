@@ -1,6 +1,6 @@
-export interface Result {
+export interface Result<T = any> {
 	status: number
-	body?: any
+	body?: T
 	header?: {
 		eTag?: string
 		wwwAuthenticate?: string

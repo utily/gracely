@@ -43,6 +43,9 @@
 			"!**/dist/**"
 		]
 	},
+	"overrides": {
+		"semver": "7.5.3"
+	},
 	"scripts": {
 		"lint": "eslint '**/*.{ts,tsx}'",
 		"fix": "eslint '**/*.{ts,tsx}' --fix",
@@ -56,10 +59,10 @@
 		"@typescript-eslint/eslint-plugin": "5.59.6",
 		"@typescript-eslint/parser": "5.59.6",
 		"eslint": "^8.40.0",
-		"eslint-plugin-prettierx": "github:utily/eslint-plugin-prettierx#utily-20221229",
+		"eslint-plugin-prettierx": "github:utily/eslint-plugin-prettierx#utily-20231004",
 		"eslint-plugin-simple-import-sort": "^10.0.0",
 		"jest": "^29.5.0",
-		"prettierx": "github:utily/prettierx#utily-0.19.1-utily.2",
+		"prettierx": "github:utily/prettierx#utily-20231004",
 		"rimraf": "^5.0.1",
 		"ts-jest": "^29.1.0",
 		"typescript": "^5.0.4"
