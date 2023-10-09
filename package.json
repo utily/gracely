@@ -1,6 +1,6 @@
 {
 	"name": "gracely",
-	"version": "2.0.4",
+	"version": "2.0.5",
 	"description": "Graceful error handling for REST API:s.",
 	"author": "Utily Contributors",
 	"license": "MIT",
