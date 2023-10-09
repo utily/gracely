@@ -1,6 +1,6 @@
 import { Result } from "../Result"
 
-export function noContent(): Result {
+export function noContent(): Result<undefined> {
 	return { status: 204 }
 }
 export namespace noContent {
