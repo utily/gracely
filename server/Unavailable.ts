@@ -5,10 +5,11 @@ export interface Unavailable extends Error {
 	status: 503
 	type: "service unavailable"
 	error?: string
+	details?: any
 }
 
-export function unavailable(error?: string): Unavailable {
-	return { status: 503, type: "service unavailable", error }
+export function unavailable(error?: string, details?: any): Unavailable {
+	return { status: 503, type: "service unavailable", error, details }
 }
 
 export namespace Unavailable {
