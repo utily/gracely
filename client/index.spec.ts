@@ -205,4 +205,11 @@ describe("client", () => {
 			},
 		})
 	})
+	it("forbidden", () => {
+		expect(gracely.client.forbidden("Not allowed.")).toEqual({
+			status: 403,
+			type: "forbidden",
+			reason: "Not allowed.",
+		})
+	})
 })
