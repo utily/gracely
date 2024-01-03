@@ -1,4 +1,5 @@
 export { flawedContent, FlawedContent } from "./FlawedContent"
+export { forbidden, Forbidden } from "./Forbidden"
 export { invalidContent, InvalidContent } from "./InvalidContent"
 export { invalidPathArgument, InvalidPathArgument } from "./InvalidPathArgument"
 export { invalidQueryArgument, InvalidQueryArgument } from "./InvalidQueryArgument"
