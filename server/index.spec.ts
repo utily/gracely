@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest"
 import * as gracely from "../index"
 
 describe("server", () => {
