@@ -30,52 +30,23 @@
 	"github": {
 		"release": true
 	},
-	"jest": {
-		"transform": {
-			"^.+\\.(j|t)sx?$": [
-				"ts-jest",
-				{
-					"tsconfig": "./tsconfig.test.json"
-				}
-			]
-		},
-		"transformIgnorePatterns": [
-			"<rootDir>/node_modules/(?!(cryptly|authly|isoly|gracely|cloudly-http|cloudly-router|cloudly-formdata)/.*)"
-		],
-		"testEnvironment": "node",
-		"testRegex": "((\\.|/)(test|spec))(\\.|\\/.+)(jsx?|tsx?)$",
-		"testPathIgnorePatterns": [
-			"node_modules/",
-			"dist/"
-		],
-		"collectCoverageFrom": [
-			"**/*.{ts,tsx,js,jsx}",
-			"!**/node_modules/**",
-			"!**/dist/**"
-		]
-	},
-	"overrides": {
-		"semver": "7.5.3"
-	},
 	"scripts": {
 		"lint": "eslint '**/*.{ts,tsx}'",
 		"fix": "eslint '**/*.{ts,tsx}' --fix",
 		"build": "rimraf dist/* && tsc -p tsconfig.json && tsc -p tsconfig-cjs.json && ./fixup.sh",
-		"test": "jest",
+		"test": "vitest",
 		"prepare": "npm run build",
 		"clean": "rimraf dist node_modules coverage"
 	},
 	"devDependencies": {
-		"@types/jest": "^29.5.1",
 		"@typescript-eslint/eslint-plugin": "5.59.6",
 		"@typescript-eslint/parser": "5.59.6",
 		"eslint": "^8.40.0",
 		"eslint-plugin-prettierx": "github:utily/eslint-plugin-prettierx#utily-20231004",
 		"eslint-plugin-simple-import-sort": "^10.0.0",
-		"jest": "^29.5.0",
 		"prettierx": "github:utily/prettierx#utily-20231004",
 		"rimraf": "^5.0.1",
-		"ts-jest": "^29.1.0",
-		"typescript": "^5.0.4"
+		"typescript": "^5.0.4",
+		"vitest": "^2.1.3"
 	}
 }
