@@ -1,4 +1,5 @@
 node_modules
 dist
-*.local.ts
+.env
 .npmrc
+coverage/
