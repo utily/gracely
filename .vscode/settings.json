@@ -60,7 +60,6 @@
 		"transactly",
 		"typedly",
 		"uply",
-		"Renamer",
 	],
 	"typescript.tsdk": "node_modules/typescript/lib"
 }
