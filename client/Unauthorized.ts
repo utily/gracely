@@ -7,7 +7,6 @@ export interface Unauthorized extends Error {
 	type: "not authorized"
 	error?: string
 }
-
 export function unauthorized(): Error
 export function unauthorized(error: string): Error
 export function unauthorized(scheme: "basic", parameter?: { realm?: string; charset?: "UTF-8" }): Error
@@ -15,7 +14,7 @@ export function unauthorized(scheme?: "basic" | string, parameter?: { realm?: st
 	const result: Error = { status: 401, type: "not authorized" }
 	if (scheme == "basic")
 		result.header = {
-			wwwAuthenticate: `${scheme[0].toUpperCase()}${scheme.slice(1)}${
+			wwwAuthenticate: `${scheme[0]?.toUpperCase()}${scheme.slice(1)}${
 				typeof parameter == "object" && parameter && Object.keys(parameter).length > 0
 					? ` ${Object.entries(parameter ?? {})
 							.map(([p, t]) => `${p}=${t}`)
