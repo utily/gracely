@@ -1,3 +1,4 @@
+export { conflict, Conflict } from "./Conflict"
 export { flawedContent, FlawedContent } from "./FlawedContent"
 export { forbidden, Forbidden } from "./Forbidden"
 export { invalidContent, InvalidContent } from "./InvalidContent"

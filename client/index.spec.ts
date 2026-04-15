@@ -136,6 +136,8 @@ describe("client", () => {
 		expect(gracely.client.NotFound.is(gracely.client.notFound("error"))).toBeTruthy()
 		expect(gracely.client.Unauthorized.is(gracely.client.unauthorized())).toBeTruthy()
 		expect(gracely.client.Unauthorized.is(gracely.client.unauthorized("don't show why"))).toBeTruthy()
+		expect(gracely.client.Conflict.is(gracely.client.conflict("reason"))).toBeTruthy()
+		expect(gracely.client.Conflict.is(gracely.client.conflict("reason", "error"))).toBeTruthy()
 		expect(gracely.client.unauthorized("don't show why")).toEqual({
 			status: 401,
 			type: "not authorized",
@@ -210,6 +212,13 @@ describe("client", () => {
 			status: 403,
 			type: "forbidden",
 			reason: "Not allowed.",
+		})
+	})
+	it("conflict", () => {
+		expect(gracely.client.conflict("2fa already configured")).toEqual({
+			status: 409,
+			type: "conflict",
+			reason: "2fa already configured",
 		})
 	})
 })
