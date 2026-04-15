@@ -45,99 +45,78 @@ describe("client", () => {
 			response: undefined,
 		})
 	})
-	it("client errors create and is tests", () => {
-		expect(gracely.client.FlawedContent.is(gracely.client.flawedContent({ type: "test" }))).toBeTruthy()
-		expect(
-			gracely.client.FlawedContent.is(
-				gracely.client.flawedContent(
-					{
-						type: "test",
-						property: "test2",
-						condition: "isNotTest?",
-						flaws: [gracely.client.flawedContent({ type: "test", property: "test2" })],
-					},
-					"error"
-				)
-			)
-		).toBeTruthy()
-		expect(gracely.client.InvalidContent.is(gracely.client.invalidContent("type", "description"))).toBeTruthy()
-		expect(
-			gracely.client.InvalidContent.is(gracely.client.invalidContent("type", "description", "details"))
-		).toBeTruthy()
-		expect(
-			gracely.client.InvalidContent.is(gracely.client.invalidContent("type", "description", { details: "test" }))
-		).toBeTruthy()
-		expect(
-			gracely.client.InvalidContent.is(
-				gracely.client.invalidContent("type", "description", { details: "test" }, "error")
-			)
-		).toBeTruthy()
-		expect(
-			gracely.client.InvalidPathArgument.is(
-				gracely.client.invalidPathArgument("pattern", "name", "type", "description")
-			)
-		).toBeTruthy()
-		expect(
-			gracely.client.InvalidPathArgument.is(
-				gracely.client.invalidPathArgument("pattern", "name", "type", "description", "error")
-			)
-		).toBeTruthy()
-		expect(
-			gracely.client.InvalidQueryArgument.is(gracely.client.invalidQueryArgument("name", "type", "description"))
-		).toBeTruthy()
-		expect(
-			gracely.client.InvalidQueryArgument.is(
-				gracely.client.invalidQueryArgument("name", "type", "description", "error")
-			)
-		).toBeTruthy()
-		expect(
-			gracely.client.MalformedContent.is(gracely.client.malformedContent("property", "type", "description"))
-		).toBeTruthy()
-		expect(
-			gracely.client.MalformedContent.is(
-				gracely.client.malformedContent("property", "type", "description", { details: "test" })
-			)
-		).toBeTruthy()
-		expect(
-			gracely.client.MalformedContent.is(
-				gracely.client.malformedContent("property", "type", "description", { details: "test" }, "error")
-			)
-		).toBeTruthy()
-		expect(
-			gracely.client.MethodNotAllowed.is(gracely.client.methodNotAllowed(gracely.client.MethodNotAllowed.methods))
-		).toBeTruthy()
-		expect(
-			gracely.client.MethodNotAllowed.is(
-				gracely.client.methodNotAllowed([...gracely.client.MethodNotAllowed.methods], "error")
-			)
-		).toBeTruthy()
-		expect(
-			gracely.client.MissingProperty.is(gracely.client.missingProperty("property", "type", "description", "error"))
-		).toBeTruthy()
-		expect(
-			gracely.client.MissingProperty.is(
-				gracely.client.missingProperty("property", "type", { description: "1", property2: "2" })
-			)
-		).toBeTruthy()
-		expect(
-			gracely.client.MissingProperty.is(
-				gracely.client.missingProperty("property", "type", { description: "1", property2: "2" }, "error")
-			)
-		).toBeTruthy()
-		expect(
-			gracely.client.MissingQueryArgument.is(gracely.client.missingQueryArgument("name", "type", "description"))
-		).toBeTruthy()
-		expect(
-			gracely.client.MissingQueryArgument.is(
-				gracely.client.missingQueryArgument("name", "type", "description", "error")
-			)
-		).toBeTruthy()
-		expect(gracely.client.NotFound.is(gracely.client.notFound())).toBeTruthy()
-		expect(gracely.client.NotFound.is(gracely.client.notFound("error"))).toBeTruthy()
-		expect(gracely.client.Unauthorized.is(gracely.client.unauthorized())).toBeTruthy()
-		expect(gracely.client.Unauthorized.is(gracely.client.unauthorized("don't show why"))).toBeTruthy()
-		expect(gracely.client.Conflict.is(gracely.client.conflict("reason"))).toBeTruthy()
-		expect(gracely.client.Conflict.is(gracely.client.conflict("reason", "error"))).toBeTruthy()
+	it.each([
+		[gracely.client.flawedContent({ type: "test" }), gracely.client.FlawedContent.is],
+		[
+			gracely.client.flawedContent(
+				{
+					type: "test",
+					property: "test2",
+					condition: "isNotTest?",
+					flaws: [gracely.client.flawedContent({ type: "test", property: "test2" })],
+				},
+				"error"
+			),
+			gracely.client.FlawedContent.is,
+		],
+		[gracely.client.invalidContent("type", "description"), gracely.client.InvalidContent.is],
+		[gracely.client.invalidContent("type", "description", "details"), gracely.client.InvalidContent.is],
+		[gracely.client.invalidContent("type", "description", { details: "test" }), gracely.client.InvalidContent.is],
+		[
+			gracely.client.invalidContent("type", "description", { details: "test" }, "error"),
+			gracely.client.InvalidContent.is,
+		],
+		[
+			gracely.client.invalidPathArgument("pattern", "name", "type", "description"),
+			gracely.client.InvalidPathArgument.is,
+		],
+		[
+			gracely.client.invalidPathArgument("pattern", "name", "type", "description", "error"),
+			gracely.client.InvalidPathArgument.is,
+		],
+		[gracely.client.invalidQueryArgument("name", "type", "description"), gracely.client.InvalidQueryArgument.is],
+		[
+			gracely.client.invalidQueryArgument("name", "type", "description", "error"),
+			gracely.client.InvalidQueryArgument.is,
+		],
+		[gracely.client.malformedContent("property", "type", "description"), gracely.client.MalformedContent.is],
+		[
+			gracely.client.malformedContent("property", "type", "description", { details: "test" }),
+			gracely.client.MalformedContent.is,
+		],
+		[
+			gracely.client.malformedContent("property", "type", "description", { details: "test" }, "error"),
+			gracely.client.MalformedContent.is,
+		],
+		[gracely.client.methodNotAllowed(gracely.client.MethodNotAllowed.methods), gracely.client.MethodNotAllowed.is],
+		[
+			gracely.client.methodNotAllowed([...gracely.client.MethodNotAllowed.methods], "error"),
+			gracely.client.MethodNotAllowed.is,
+		],
+		[gracely.client.missingProperty("property", "type", "description", "error"), gracely.client.MissingProperty.is],
+		[
+			gracely.client.missingProperty("property", "type", { description: "1", property2: "2" }),
+			gracely.client.MissingProperty.is,
+		],
+		[
+			gracely.client.missingProperty("property", "type", { description: "1", property2: "2" }, "error"),
+			gracely.client.MissingProperty.is,
+		],
+		[gracely.client.missingQueryArgument("name", "type", "description"), gracely.client.MissingQueryArgument.is],
+		[
+			gracely.client.missingQueryArgument("name", "type", "description", "error"),
+			gracely.client.MissingQueryArgument.is,
+		],
+		[gracely.client.notFound(), gracely.client.NotFound.is],
+		[gracely.client.notFound("error"), gracely.client.NotFound.is],
+		[gracely.client.unauthorized(), gracely.client.Unauthorized.is],
+		[gracely.client.unauthorized("don't show why"), gracely.client.Unauthorized.is],
+		[gracely.client.conflict("reason"), gracely.client.Conflict.is],
+		[gracely.client.conflict("reason", "error"), gracely.client.Conflict.is],
+	])("client errors create and is tests", (error: gracely.Error, is: (value: any) => boolean) => {
+		expect(is(error)).toBeTruthy()
+	})
+	it("unauthorized", () => {
 		expect(gracely.client.unauthorized("don't show why")).toEqual({
 			status: 401,
 			type: "not authorized",
