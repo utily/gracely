@@ -14,11 +14,11 @@ export function backendTimeout(error?: string): BackendTimeout {
 export namespace BackendTimeout {
 	export function is(value: any): value is BackendTimeout {
 		return (
-			typeof value == "object" &&
-			value.status == 504 &&
-			value.type == "backend timeout" &&
-			(value.error == undefined || typeof value.error == "string") &&
-			Result.is(value)
+			typeof value == "object"
+			&& value.status == 504
+			&& value.type == "backend timeout"
+			&& (value.error == undefined || typeof value.error == "string")
+			&& Result.is(value)
 		)
 	}
 }

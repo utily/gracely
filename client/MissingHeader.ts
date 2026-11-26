@@ -9,23 +9,19 @@ export interface MissingHeader extends Error {
 }
 
 export function missingHeader(header: string, description: string): MissingHeader {
-	return {
-		status: 400,
-		type: "missing header",
-		content: { header, description },
-	}
+	return { status: 400, type: "missing header", content: { header, description } }
 }
 
 export namespace MissingHeader {
 	export function is(value: any): value is MissingHeader {
 		return (
-			typeof value == "object" &&
-			value.status == 400 &&
-			value.type == "missing header" &&
-			typeof value.content == "object" &&
-			typeof value.content.header == "string" &&
-			typeof value.content.description == "string" &&
-			Result.is(value)
+			typeof value == "object"
+			&& value.status == 400
+			&& value.type == "missing header"
+			&& typeof value.content == "object"
+			&& typeof value.content.header == "string"
+			&& typeof value.content.description == "string"
+			&& Result.is(value)
 		)
 	}
 }

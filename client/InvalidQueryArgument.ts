@@ -20,15 +20,15 @@ export function invalidQueryArgument(
 export namespace InvalidQueryArgument {
 	export function is(value: any): value is InvalidQueryArgument {
 		return (
-			typeof value == "object" &&
-			value.status == 400 &&
-			value.type == "invalid query argument" &&
-			typeof value.argument == "object" &&
-			typeof value.argument.name == "string" &&
-			typeof value.argument.type == "string" &&
-			typeof value.argument.description == "string" &&
-			(value.error == undefined || typeof value.error == "string") &&
-			Result.is(value)
+			typeof value == "object"
+			&& value.status == 400
+			&& value.type == "invalid query argument"
+			&& typeof value.argument == "object"
+			&& typeof value.argument.name == "string"
+			&& typeof value.argument.type == "string"
+			&& typeof value.argument.description == "string"
+			&& (value.error == undefined || typeof value.error == "string")
+			&& Result.is(value)
 		)
 	}
 }

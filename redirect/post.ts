@@ -1,11 +1,7 @@
-import { Response } from "../Response"
 import { Result } from "../Result"
 import * as success from "../success"
 
-export function post(
-	location: string,
-	data: { [property: string]: string }
-): Result & { body: string; response: Response } {
+export function post(location: string, data: { [property: string]: string }): Result<string> & { body: string } {
 	return success.ok(`<!DOCTYPE html>
 <html>
 	<head>

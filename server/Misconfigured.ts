@@ -16,13 +16,13 @@ export function misconfigured(key: string, description: string, error?: string):
 export namespace Misconfigured {
 	export function is(value: any): value is Misconfigured {
 		return (
-			typeof value == "object" &&
-			value.status == 503 &&
-			value.type == "missing configuration" &&
-			typeof value.key == "string" &&
-			typeof value.description == "string" &&
-			(value.error == undefined || typeof value.error == "string") &&
-			Result.is(value)
+			typeof value == "object"
+			&& value.status == 503
+			&& value.type == "missing configuration"
+			&& typeof value.key == "string"
+			&& typeof value.description == "string"
+			&& (value.error == undefined || typeof value.error == "string")
+			&& Result.is(value)
 		)
 	}
 }

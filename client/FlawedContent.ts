@@ -16,12 +16,12 @@ export function flawedContent(content: Flaw | false, error?: string): FlawedCont
 export namespace FlawedContent {
 	export function is(value: any): value is FlawedContent {
 		return (
-			typeof value == "object" &&
-			value.status == 400 &&
-			value.type == "flawed content" &&
-			(Flaw.is(value.content) || value.content === false) &&
-			(value.error == undefined || typeof value.error == "string") &&
-			Result.is(value)
+			typeof value == "object"
+			&& value.status == 400
+			&& value.type == "flawed content"
+			&& (Flaw.is(value.content) || value.content === false)
+			&& (value.error == undefined || typeof value.error == "string")
+			&& Result.is(value)
 		)
 	}
 }

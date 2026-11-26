@@ -15,11 +15,11 @@ export function databaseFailure(details?: any, error?: string): DatabaseFailure 
 export namespace DatabaseFailure {
 	export function is(value: any): value is DatabaseFailure {
 		return (
-			typeof value == "object" &&
-			value.status == 502 &&
-			value.type == "database failure" &&
-			(value.error == undefined || typeof value.error == "string") &&
-			Result.is(value)
+			typeof value == "object"
+			&& value.status == 502
+			&& value.type == "database failure"
+			&& (value.error == undefined || typeof value.error == "string")
+			&& Result.is(value)
 		)
 	}
 }

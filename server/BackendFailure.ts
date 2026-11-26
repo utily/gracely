@@ -23,12 +23,12 @@ export function backendFailure(backend: string | any, details?: any, reference?:
 export namespace BackendFailure {
 	export function is(value: any): value is BackendFailure {
 		return (
-			typeof value == "object" &&
-			value.status == 502 &&
-			value.type == "backend failure" &&
-			typeof value.backend == "string" &&
-			(value.error == undefined || typeof value.error == "string") &&
-			Result.is(value)
+			typeof value == "object"
+			&& value.status == 502
+			&& value.type == "backend failure"
+			&& typeof value.backend == "string"
+			&& (value.error == undefined || typeof value.error == "string")
+			&& Result.is(value)
 		)
 	}
 }

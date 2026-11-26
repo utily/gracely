@@ -15,12 +15,12 @@ export function forbidden(reason?: string, error?: string): Forbidden {
 export namespace Forbidden {
 	export function is(value: any): value is Forbidden {
 		return (
-			typeof value == "object" &&
-			value.status == 403 &&
-			value.type == "forbidden" &&
-			(value.reason == undefined || typeof value.reason == "string") &&
-			(value.error == undefined || typeof value.error == "string") &&
-			Result.is(value)
+			typeof value == "object"
+			&& value.status == 403
+			&& value.type == "forbidden"
+			&& (value.reason == undefined || typeof value.reason == "string")
+			&& (value.error == undefined || typeof value.error == "string")
+			&& Result.is(value)
 		)
 	}
 }

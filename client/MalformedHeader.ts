@@ -9,23 +9,19 @@ export interface MalformedHeader extends Error {
 }
 
 export function malformedHeader(header: string, description: string): MalformedHeader {
-	return {
-		status: 400,
-		type: "malformed header",
-		content: { header, description },
-	}
+	return { status: 400, type: "malformed header", content: { header, description } }
 }
 
 export namespace MalformedHeader {
 	export function is(value: any): value is MalformedHeader {
 		return (
-			typeof value == "object" &&
-			value.status == 400 &&
-			value.type == "malformed header" &&
-			typeof value.content == "object" &&
-			typeof value.content.header == "string" &&
-			typeof value.content.description == "string" &&
-			Result.is(value)
+			typeof value == "object"
+			&& value.status == 400
+			&& value.type == "malformed header"
+			&& typeof value.content == "object"
+			&& typeof value.content.header == "string"
+			&& typeof value.content.description == "string"
+			&& Result.is(value)
 		)
 	}
 }

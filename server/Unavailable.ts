@@ -15,11 +15,11 @@ export function unavailable(error?: string, details?: any): Unavailable {
 export namespace Unavailable {
 	export function is(value: any): value is Unavailable {
 		return (
-			typeof value == "object" &&
-			value.status == 503 &&
-			value.type == "service unavailable" &&
-			(value.error == undefined || typeof value.error == "string") &&
-			Result.is(value)
+			typeof value == "object"
+			&& value.status == 503
+			&& value.type == "service unavailable"
+			&& (value.error == undefined || typeof value.error == "string")
+			&& Result.is(value)
 		)
 	}
 }

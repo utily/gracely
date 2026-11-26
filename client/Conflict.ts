@@ -15,12 +15,12 @@ export function conflict(reason?: string, error?: string): Conflict {
 export namespace Conflict {
 	export function is(value: any): value is Conflict {
 		return (
-			typeof value == "object" &&
-			value.status == 409 &&
-			value.type == "conflict" &&
-			(value.reason == undefined || typeof value.reason == "string") &&
-			(value.error == undefined || typeof value.error == "string") &&
-			Result.is(value)
+			typeof value == "object"
+			&& value.status == 409
+			&& value.type == "conflict"
+			&& (value.reason == undefined || typeof value.reason == "string")
+			&& (value.error == undefined || typeof value.error == "string")
+			&& Result.is(value)
 		)
 	}
 }

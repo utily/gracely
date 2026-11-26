@@ -14,26 +14,21 @@ export function missingQueryArgument(
 	description: string,
 	error?: string
 ): MissingQueryArgument {
-	return {
-		status: 400,
-		type: "missing query argument",
-		argument: { name, type, description },
-		error,
-	}
+	return { status: 400, type: "missing query argument", argument: { name, type, description }, error }
 }
 
 export namespace MissingQueryArgument {
 	export function is(value: any): value is MissingQueryArgument {
 		return (
-			typeof value == "object" &&
-			value.status == 400 &&
-			value.type == "missing query argument" &&
-			typeof value.argument == "object" &&
-			typeof value.argument.name == "string" &&
-			typeof value.argument.type == "string" &&
-			typeof value.argument.description == "string" &&
-			(value.error == undefined || typeof value.error == "string") &&
-			Result.is(value)
+			typeof value == "object"
+			&& value.status == 400
+			&& value.type == "missing query argument"
+			&& typeof value.argument == "object"
+			&& typeof value.argument.name == "string"
+			&& typeof value.argument.type == "string"
+			&& typeof value.argument.description == "string"
+			&& (value.error == undefined || typeof value.error == "string")
+			&& Result.is(value)
 		)
 	}
 }

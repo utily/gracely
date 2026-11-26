@@ -22,16 +22,16 @@ export function invalidPathArgument(
 export namespace InvalidPathArgument {
 	export function is(value: any): value is InvalidPathArgument {
 		return (
-			typeof value == "object" &&
-			value.status == 400 &&
-			value.type == "invalid path argument" &&
-			typeof value.pattern == "string" &&
-			typeof value.argument == "object" &&
-			typeof value.argument.name == "string" &&
-			typeof value.argument.type == "string" &&
-			typeof value.argument.description == "string" &&
-			(value.error == undefined || typeof value.error == "string") &&
-			Result.is(value)
+			typeof value == "object"
+			&& value.status == 400
+			&& value.type == "invalid path argument"
+			&& typeof value.pattern == "string"
+			&& typeof value.argument == "object"
+			&& typeof value.argument.name == "string"
+			&& typeof value.argument.type == "string"
+			&& typeof value.argument.description == "string"
+			&& (value.error == undefined || typeof value.error == "string")
+			&& Result.is(value)
 		)
 	}
 }

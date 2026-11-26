@@ -10,12 +10,8 @@ describe("client", () => {
 		expect({ ...e, response: undefined }).toEqual({
 			status: 400,
 			type: "missing query argument",
-			argument: {
-				name: "argument",
-				type: "string",
-				description: "description of argument",
-			},
-			response: undefined,
+			argument: { name: "argument", type: "string", description: "description of argument" },
+			response: undefined
 		})
 	})
 	it("missing property w/ description", () => {
@@ -23,12 +19,8 @@ describe("client", () => {
 		expect({ ...e, response: undefined }).toEqual({
 			status: 400,
 			type: "missing property",
-			content: {
-				property: "property",
-				type: "string",
-				description: "description of property",
-			},
-			response: undefined,
+			content: { property: "property", type: "string", description: "description of property" },
+			response: undefined
 		})
 	})
 	it("missing property w/ object", () => {
@@ -36,13 +28,8 @@ describe("client", () => {
 		expect({ ...e, response: undefined }).toEqual({
 			status: 400,
 			type: "missing property",
-			content: {
-				property: "property",
-				type: "string",
-				url: "http://example.com",
-				key: "abcdef",
-			},
-			response: undefined,
+			content: { property: "property", type: "string", url: "http://example.com", key: "abcdef" },
+			response: undefined
 		})
 	})
 	it.each([
@@ -53,66 +40,66 @@ describe("client", () => {
 					type: "test",
 					property: "test2",
 					condition: "isNotTest?",
-					flaws: [gracely.client.flawedContent({ type: "test", property: "test2" })],
+					flaws: [gracely.client.flawedContent({ type: "test", property: "test2" })]
 				},
 				"error"
 			),
-			gracely.client.FlawedContent.is,
+			gracely.client.FlawedContent.is
 		],
 		[gracely.client.invalidContent("type", "description"), gracely.client.InvalidContent.is],
 		[gracely.client.invalidContent("type", "description", "details"), gracely.client.InvalidContent.is],
 		[gracely.client.invalidContent("type", "description", { details: "test" }), gracely.client.InvalidContent.is],
 		[
 			gracely.client.invalidContent("type", "description", { details: "test" }, "error"),
-			gracely.client.InvalidContent.is,
+			gracely.client.InvalidContent.is
 		],
 		[
 			gracely.client.invalidPathArgument("pattern", "name", "type", "description"),
-			gracely.client.InvalidPathArgument.is,
+			gracely.client.InvalidPathArgument.is
 		],
 		[
 			gracely.client.invalidPathArgument("pattern", "name", "type", "description", "error"),
-			gracely.client.InvalidPathArgument.is,
+			gracely.client.InvalidPathArgument.is
 		],
 		[gracely.client.invalidQueryArgument("name", "type", "description"), gracely.client.InvalidQueryArgument.is],
 		[
 			gracely.client.invalidQueryArgument("name", "type", "description", "error"),
-			gracely.client.InvalidQueryArgument.is,
+			gracely.client.InvalidQueryArgument.is
 		],
 		[gracely.client.malformedContent("property", "type", "description"), gracely.client.MalformedContent.is],
 		[
 			gracely.client.malformedContent("property", "type", "description", { details: "test" }),
-			gracely.client.MalformedContent.is,
+			gracely.client.MalformedContent.is
 		],
 		[
 			gracely.client.malformedContent("property", "type", "description", { details: "test" }, "error"),
-			gracely.client.MalformedContent.is,
+			gracely.client.MalformedContent.is
 		],
 		[gracely.client.methodNotAllowed(gracely.client.MethodNotAllowed.methods), gracely.client.MethodNotAllowed.is],
 		[
 			gracely.client.methodNotAllowed([...gracely.client.MethodNotAllowed.methods], "error"),
-			gracely.client.MethodNotAllowed.is,
+			gracely.client.MethodNotAllowed.is
 		],
 		[gracely.client.missingProperty("property", "type", "description", "error"), gracely.client.MissingProperty.is],
 		[
 			gracely.client.missingProperty("property", "type", { description: "1", property2: "2" }),
-			gracely.client.MissingProperty.is,
+			gracely.client.MissingProperty.is
 		],
 		[
 			gracely.client.missingProperty("property", "type", { description: "1", property2: "2" }, "error"),
-			gracely.client.MissingProperty.is,
+			gracely.client.MissingProperty.is
 		],
 		[gracely.client.missingQueryArgument("name", "type", "description"), gracely.client.MissingQueryArgument.is],
 		[
 			gracely.client.missingQueryArgument("name", "type", "description", "error"),
-			gracely.client.MissingQueryArgument.is,
+			gracely.client.MissingQueryArgument.is
 		],
 		[gracely.client.notFound(), gracely.client.NotFound.is],
 		[gracely.client.notFound("error"), gracely.client.NotFound.is],
 		[gracely.client.unauthorized(), gracely.client.Unauthorized.is],
 		[gracely.client.unauthorized("don't show why"), gracely.client.Unauthorized.is],
 		[gracely.client.conflict("reason"), gracely.client.Conflict.is],
-		[gracely.client.conflict("reason", "error"), gracely.client.Conflict.is],
+		[gracely.client.conflict("reason", "error"), gracely.client.Conflict.is]
 	])("client errors create and is tests", (error: gracely.Error, is: (value: any) => boolean) => {
 		expect(is(error)).toBeTruthy()
 	})
@@ -120,84 +107,72 @@ describe("client", () => {
 		expect(gracely.client.unauthorized("don't show why")).toEqual({
 			status: 401,
 			type: "not authorized",
-			error: "don't show why",
+			error: "don't show why"
 		})
 	})
 	it("unauthorized response options testing is it correct?", () => {
 		expect(gracely.client.unauthorized("basic")).toEqual({
 			status: 401,
 			type: "not authorized",
-			header: { wwwAuthenticate: "Basic" },
+			header: { wwwAuthenticate: "Basic" }
 		})
 		expect(gracely.client.unauthorized("basic", {})).toEqual({
 			status: 401,
 			type: "not authorized",
-			header: { wwwAuthenticate: "Basic" },
+			header: { wwwAuthenticate: "Basic" }
 		})
 		expect(gracely.client.unauthorized("basic", { realm: "" })).toEqual({
 			status: 401,
 			type: "not authorized",
-			header: { wwwAuthenticate: "Basic realm=" },
+			header: { wwwAuthenticate: "Basic realm=" }
 		})
 	})
 	it("unauthorized response options testing", () => {
 		expect(gracely.client.unauthorized("basic", { realm: "unicorn" })).toEqual({
 			status: 401,
 			type: "not authorized",
-			header: { wwwAuthenticate: "Basic realm=unicorn" },
+			header: { wwwAuthenticate: "Basic realm=unicorn" }
 		})
 		expect(gracely.client.unauthorized("basic", { realm: "unicorn", charset: "UTF-8" })).toEqual({
 			status: 401,
 			type: "not authorized",
-			header: { wwwAuthenticate: "Basic realm=unicorn, charset=UTF-8" },
+			header: { wwwAuthenticate: "Basic realm=unicorn, charset=UTF-8" }
 		})
 		expect(gracely.client.unauthorized("basic", { charset: "UTF-8" })).toEqual({
 			status: 401,
 			type: "not authorized",
-			header: { wwwAuthenticate: "Basic charset=UTF-8" },
+			header: { wwwAuthenticate: "Basic charset=UTF-8" }
 		})
 	})
 	it("missing header", () => {
 		expect(gracely.client.missingHeader("If-Match", "Header If-Match is required for this resource.")).toEqual({
 			status: 400,
 			type: "missing header",
-			content: {
-				header: "If-Match",
-				description: "Header If-Match is required for this resource.",
-			},
+			content: { header: "If-Match", description: "Header If-Match is required for this resource." }
 		})
 	})
 	it("malformed header", () => {
 		expect(gracely.client.malformedHeader("If-Match", "Expected value to be a date.")).toEqual({
 			status: 400,
 			type: "malformed header",
-			content: {
-				header: "If-Match",
-				description: "Expected value to be a date.",
-			},
+			content: { header: "If-Match", description: "Expected value to be a date." }
 		})
 	})
 	it("entity tag mismatch", () => {
 		expect(gracely.client.entityTagMismatch("Expected etag to be a date.")).toEqual({
 			status: 412,
 			type: "entity tag mismatch",
-			content: {
-				description: "Expected etag to be a date.",
-			},
+			content: { description: "Expected etag to be a date." }
 		})
 	})
 	it("forbidden", () => {
-		expect(gracely.client.forbidden("Not allowed.")).toEqual({
-			status: 403,
-			type: "forbidden",
-			reason: "Not allowed.",
-		})
+		expect(gracely.client.forbidden("Not allowed.")).toEqual({ status: 403, type: "forbidden", reason: "Not allowed." })
 	})
 	it("conflict", () => {
 		expect(gracely.client.conflict("2fa already configured")).toEqual({
 			status: 409,
 			type: "conflict",
-			reason: "2fa already configured",
+			reason: "2fa already configured"
 		})
 	})
 })

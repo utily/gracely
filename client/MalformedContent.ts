@@ -21,15 +21,15 @@ export function malformedContent(
 export namespace MalformedContent {
 	export function is(value: any): value is MalformedContent {
 		return (
-			typeof value == "object" &&
-			value.status == 400 &&
-			value.type == "malformed content" &&
-			typeof value.content == "object" &&
-			typeof value.content.property == "string" &&
-			typeof value.content.type == "string" &&
-			typeof value.content.description == "string" &&
-			(value.error == undefined || typeof value.error == "string") &&
-			Result.is(value)
+			typeof value == "object"
+			&& value.status == 400
+			&& value.type == "malformed content"
+			&& typeof value.content == "object"
+			&& typeof value.content.property == "string"
+			&& typeof value.content.type == "string"
+			&& typeof value.content.description == "string"
+			&& (value.error == undefined || typeof value.error == "string")
+			&& Result.is(value)
 		)
 	}
 }

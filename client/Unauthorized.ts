@@ -20,26 +20,25 @@ export function unauthorized(scheme?: "basic" | string, parameter?: { realm?: st
 							.map(([p, t]) => `${p}=${t}`)
 							.join(", ")}`
 					: ""
-			}`,
+			}`
 		}
-	else
-		result.error = scheme
+	else result.error = scheme
 	return result
 }
 
 export namespace Unauthorized {
 	export function is(value: any): value is Unauthorized {
 		return (
-			typeof value == "object" &&
-			value &&
-			value.status == 401 &&
-			value.type == "not authorized" &&
-			(value.error == undefined || typeof value.error == "string") &&
-			(value.header == undefined ||
-				(typeof value.header == "object" &&
-					value.header &&
-					(value.header.wwwAuthenticate == undefined || typeof value.header.wwwAuthenticate == "string"))) &&
-			Result.is(value)
+			typeof value == "object"
+			&& value
+			&& value.status == 401
+			&& value.type == "not authorized"
+			&& (value.error == undefined || typeof value.error == "string")
+			&& (value.header == undefined
+				|| (typeof value.header == "object"
+					&& value.header
+					&& (value.header.wwwAuthenticate == undefined || typeof value.header.wwwAuthenticate == "string")))
+			&& Result.is(value)
 		)
 	}
 }
